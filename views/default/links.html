@@ -1,0 +1,15 @@
+{{extend 'layout.html'}}
+
+{{from dtutils import differential_date_str}}
+<h1>Your Links</h1>
+<table class="table">
+    {{for link in links:}}
+    <tr>
+        <td><a href="{{=link.url}}">{{=link.title or link.url}}</a></td>
+        <td>{{=differential_date_str(link.created_on)}}</td>
+        <td>{{=link.profile.label if link.profile else ''}}</td>
+        <td><a href="{{=URL('show', args=[link.id])}}">Details</a></td>
+        <td>{{=link.excerpt[:100] + '...' if link.excerpt else ''}}</td>
+    </tr>
+    {{pass}}
+</table>

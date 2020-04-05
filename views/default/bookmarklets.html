@@ -1,0 +1,11 @@
+{{extend 'layout.html'}}
+
+<h1>Your bookmarklets</h1>
+<table class="table">
+    {{for row in rows:}}
+    <tr>
+        <td><a href="{{=URL('store', args=[row.identifier], scheme=True, host=True)}}">{{=row.identifier}}</a></td>
+        <td><a href="javascript:(function(){location.href='{{=URL('store', args=[row.identifier], scheme=True, host=True)}}?url='+encodeURIComponent(location.href)+'&title='+encodeURIComponent(document.title)+'&text='+encodeURIComponent(window.getSelection().toString());})();">Bookmark</a></td>
+    </tr>
+    {{pass}}
+</table>

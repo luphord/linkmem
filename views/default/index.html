@@ -1,0 +1,4 @@
+{{extend 'layout.html'}}
+
+<h2>Welcome {{=auth.user.first_name if auth.user else 'Anonymous'}}!</h2>
+
